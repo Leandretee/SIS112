@@ -1,0 +1,15 @@
+C:\UCB\Documents\GitHub\SIS112\LlamarAlProcees\bin\Debug\net8.0\LlamarAlProcees.exe
+C:\UCB\Documents\GitHub\SIS112\LlamarAlProcees\bin\Debug\net8.0\LlamarAlProcees.deps.json
+C:\UCB\Documents\GitHub\SIS112\LlamarAlProcees\bin\Debug\net8.0\LlamarAlProcees.runtimeconfig.json
+C:\UCB\Documents\GitHub\SIS112\LlamarAlProcees\bin\Debug\net8.0\LlamarAlProcees.dll
+C:\UCB\Documents\GitHub\SIS112\LlamarAlProcees\bin\Debug\net8.0\LlamarAlProcees.pdb
+C:\UCB\Documents\GitHub\SIS112\LlamarAlProcees\obj\Debug\net8.0\LlamarAlProcees.GeneratedMSBuildEditorConfig.editorconfig
+C:\UCB\Documents\GitHub\SIS112\LlamarAlProcees\obj\Debug\net8.0\LlamarAlProcees.AssemblyInfoInputs.cache
+C:\UCB\Documents\GitHub\SIS112\LlamarAlProcees\obj\Debug\net8.0\LlamarAlProcees.AssemblyInfo.cs
+C:\UCB\Documents\GitHub\SIS112\LlamarAlProcees\obj\Debug\net8.0\LlamarAlProcees.csproj.CoreCompileInputs.cache
+C:\UCB\Documents\GitHub\SIS112\LlamarAlProcees\obj\Debug\net8.0\LlamarAlProcees.sourcelink.json
+C:\UCB\Documents\GitHub\SIS112\LlamarAlProcees\obj\Debug\net8.0\LlamarAlProcees.dll
+C:\UCB\Documents\GitHub\SIS112\LlamarAlProcees\obj\Debug\net8.0\refint\LlamarAlProcees.dll
+C:\UCB\Documents\GitHub\SIS112\LlamarAlProcees\obj\Debug\net8.0\LlamarAlProcees.pdb
+C:\UCB\Documents\GitHub\SIS112\LlamarAlProcees\obj\Debug\net8.0\LlamarAlProcees.genruntimeconfig.cache
+C:\UCB\Documents\GitHub\SIS112\LlamarAlProcees\obj\Debug\net8.0\ref\LlamarAlProcees.dll

@@ -1,27 +1,42 @@
 class Persona {
     constructor(nombre, edad, carrera) {
-        this.nombre = nombre;
-        this.edad = edad;
-        this.carrera = carrera;
+      this.nombre = nombre;
+      this.edad = edad;
+      this.carrera = carrera;
     }
-
+  
     saludar() {
-        console.log('Hola, mi nombre es' + this.nombre + 'y tengo' + this.edad +'años.'); //console.log es priont
+      return 'Hola, mi nombre es ' + this.nombre + ' y tengo ' + this.edad + ' años.'
     }
-    cumpleaños() {
-        this.edad = this.edad + 1;
-        console.log('¡Feliz cumpleaños! Ahora tengo' + this.edad + 'años.');
+  
+    cumpleanios() {
+      return '¡Felicidades! tienes ' + this.edad + ' años.';
     }
+  
     estudiar() {
-        console.log('Estoy estudiando' + this.carrera);
+      return 'Estoy estudiando ' + this.carrera;
     }
-}
-
-function SaludoPersona1(){
-    // Crear una instancia de la clase Persona
-    //declara la var / let
-const persona1 = new Persona("Ana", 22, "Ingenieria Informartica");
-
-// Llamar a los métodos
-persona1.saludar();
-}
+  }
+  
+  // Crear una instancia de la clase Persona
+  const persona = new Persona('Juan', 25, 'Ingeniería');
+  
+  // Inicializar los elementos HTML
+  const saludar = document.getElementById('saludar');
+  const edad = document.getElementById('edad');
+  const carrera = document.getElementById('carrera');
+  
+  // Función para saludar
+  function botonSaludar() {
+    saludar.textContent = persona.saludar();
+  }
+  
+  // Función para cumpleaños
+  function botonCumpleanios() {
+    edad.textContent = persona.cumpleanios();
+  }
+  
+  // Función para estudiar
+  function botonEstudiar() {
+    carrera.textContent = persona.estudiar();
+  }

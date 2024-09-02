@@ -77,10 +77,8 @@ class Persona:
         return "Universidad eliminada."
 
 
-# Crear una instancia de la clase Persona
 persona = Persona('Leandro', 18, 'Ingeniería Industrial', 'UCB')
 
-# Menú para interactuar con la persona
 while True:
     print("\nMenú:")
     print("1. Saludar")

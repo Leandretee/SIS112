@@ -50,3 +50,19 @@ class Persona {
   function botonUniveridad() {
     universidad.textContent = persona.universidad();
   }
+
+  function botonmodificarSaludar() {
+    saludar.textContent = persona.saludar();
+  }
+
+  function botonSaludar() {
+    saludar.textContent = persona.saludar();
+  }
+
+  function botonSaludar() {
+    saludar.textContent = persona.saludar();
+  }
+
+  function botonSaludar() {
+    saludar.textContent = persona.saludar();
+  }

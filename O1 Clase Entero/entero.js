@@ -45,21 +45,25 @@ class Entero {
         return (this.Num > 0)
     }
 
-    esFactorial() {
-        const factorial = n => n <= 1 ? 1 : n * factorial(n - 1);
+    esFactorial(){
+        if (this.Num < 0) return "No hay factorial de numero negativos";
+        let factorial = 1, i = this.Num;
+        while (i > 1) factorial *= i--;
+        return factorial;
     }
 
     esPerfecto(){
-        function isPerfect(n) {
-            let sum = 0;
-            for (let i = 1; i < n; i++) {
-              if (n % i === 0) {
-                sum += i;
-              }
+        let suma = 0;  // Inicializamos una variable para almacenar la suma de divisores
+
+        // Recorremos desde 1 hasta Num-1 para encontrar los divisores
+        for (let i = 1; i < this.Num; i++) {
+            if (this.Num % i === 0) {  // Si i es divisor de Num
+                suma += i;  // Añadimos i a la suma
             }
-            return sum === n;
-          }
-}
+        } 
+        // Comprobamos si la suma de los divisores es igual al número
+        return suma === this.Num;
+    }
 }
 
 //Las funciones = button HTML
@@ -101,15 +105,13 @@ function esPositivoNegativoValorNum(){
     ClaseEntero.showResultado(resp)
 }
 
-//Numfunction factorial(n) {
-    function esFactorial(n) {
-        ClaseEntero.esFactorial();
-        ClaseEntero.showNum();
-      }
+function esFactorialNum(){
+    var respuesta = ClaseEntero.esFactorial();
+    ClaseEntero.showResultado("Factorial:" + respuesta)
+}
 
-//Verificar si es perfecto
-function esPerfecto(){
+function esPerfectoNum(){
     var respuesta = ClaseEntero.esPerfecto();
-    var resp = respuesta ? "Es Perfecto":"No es Perfecto"
+    var resp = respuesta ? "Es Num perfecto":"No es Num perfecto"
     ClaseEntero.showResultado(resp)
 }

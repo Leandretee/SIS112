@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Control de Entero</title>
+    <!-- Enlace a la hoja de estilos de Bootstrap para diseño -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Estilos adicionales para personalización -->
+    <style>
+        .container {
+            margin-top: 50px;
+        }
+        .result {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">Control de Entero</h1>
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="numeroInput">Ingrese un número entero:</label>
+                    <input type="number" class="form-control" id="numeroInput" placeholder="Número entero" value="0">
+                </div>
+                <div class="text-center">
+                    <button class="btn btn-primary" onclick="cargarNum()">CARGAR NUM ENTERO</button>
+                    <br>
+                    <br>
+                    <button class="btn btn-secondary" onclick="mostrarNum()">MOSTRAR ENTERO</button>
+                    <br>
+                    <br>
+                    <button class="btn btn-success" onclick="incrementarValor()">(+)</button>
+                    <button class="btn btn-danger" onclick="decrementarValor()">(-)</button>
+                    <br>
+                    <br>
+                    <button class="btn btn-success" onclick="esParImparValorNum()">ES PAR IMPAR</button>
+                    <br>
+                    <br>
+                    <button class="btn btn-success" onclick="esPositivoNegativoValorNum()">ES POSITIVO NEGATIVO</button>
+                    <br>
+                    <br>
+                    <button class="btn btn-secondary" onclick="esFactorialNum()">MOSTRAR FACTORIAL</button>
+                    <br>
+                    <br>
+                    <button class="btn btn-success" onclick="esPerfectoNum()">ES PERFECTO</button>
+                </div>
+                    <h1>RESULTADO</h1>
+                    <div id="resultado" class="mt-2"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Enlace al archivo JavaScript externo -->
+    <script src="entero.js"></script>
+    <!-- Enlace a la librería jQuery necesaria para Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <!-- Enlace a la librería Popper.js necesaria para Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <!-- Enlace al archivo JavaScript de Bootstrap -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

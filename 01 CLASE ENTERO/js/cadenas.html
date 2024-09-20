@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manipulación de Cadenas</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #f0f8ff, #e0f7fa);
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+        h1 {
+            color: #00796b;
+            margin-bottom: 20px;
+        }
+        input {
+            padding: 10px;
+            width: 300px;
+            border: 2px solid #00796b;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+        button {
+            background-color: #00796b;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+            font-size: 16px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        button:hover {
+            background-color: #004d40;
+            transform: scale(1.05);
+        }
+        #RESULTADO {
+            margin-top: 20px;
+            padding: 15px;
+            border: 2px dashed #00796b;
+            border-radius: 5px;
+            background-color: #e0f7fa;
+            color: #00796b;
+            min-height: 50px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .button-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Manipulación de Cadenas</h1>
+    
+    <input type="text" id="inputCadena" placeholder="Introduce una cadena" />
+    
+    <button onclick="ejecutar('getCadena')">Obtener Cadena</button>
+    <button onclick="ejecutar('concatenar')">Concatenar</button>
+    <button onclick="ejecutar('invertir')">Invertir</button>
+    <button onclick="ejecutar('esVacia')">¿Es Vacía?</button>
+    <button onclick="ejecutar('contiene')">Contiene Subcadena</button>
+    <button onclick="ejecutar('comienzaCon')">Comienza Con</button>
+    <button onclick="ejecutar('terminaCon')">Termina Con</button>
+    <button onclick="ejecutar('longitud')">Longitud</button>
+    <button onclick="ejecutar('aMayusculas')">A Mayúsculas</button>
+    <button onclick="ejecutar('aMinusculas')">A Minúsculas</button>
+
+    <div id="resultado"></div>
+
+    <!-- Incluir el archivo JavaScript -->
+    <script src="cadenas.js"></script>
+</body>
+</html>

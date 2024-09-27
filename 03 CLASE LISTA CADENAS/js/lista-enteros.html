@@ -14,6 +14,7 @@
         }
         button {
             padding: 5px 10px;
+            margin-right: 5px;
         }
         #lista {
             margin-top: 20px;
@@ -24,11 +25,17 @@
     <h1>Agregar Números a la Lista</h1>
     <input type="number" id="numero" placeholder="Ingrese un número">
     <button id="agregarBtn">Agregar</button>
+    <input type="number" id="numeroEliminar" placeholder="Número a eliminar">
+    <button id="eliminarBtn">Eliminar</button>
+    <input type="number" id="numeroBuscar" placeholder="Número a buscar">
+    <button id="buscarBtn">Buscar</button>
+    <button id="ordenarBtn">Ordenar</button>
     
     <h2>Lista de Números</h2>
     <ul id="lista"></ul>
 
     <script
         src="lista-enteros.js"></script>
+    </script>
 </body>
 </html>

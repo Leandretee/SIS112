@@ -17,6 +17,25 @@ class ListaEnteros {
             listaElemento.appendChild(li);
         });
     }
+
+    eliminar(valor) {
+        const index = this.lista.indexOf(valor);
+        if (index !== -1) {
+            this.lista.splice(index, 1);
+            this.actualizarLista();
+        } else {
+            alert('Número no encontrado.');
+        }
+    }
+
+    buscar(valor) {
+        return this.lista.indexOf(valor);
+    }
+
+    ordenar() {
+        this.lista.sort((a, b) => a - b); // Orden ascendente
+        this.actualizarLista();
+    }
 }
 
 const miLista = new ListaEnteros();
@@ -29,4 +48,33 @@ document.getElementById('agregarBtn').addEventListener('click', () => {
     } else {
         alert('Por favor, ingresa un número válido.');
     }
+});
+
+document.getElementById('eliminarBtn').addEventListener('click', () => {
+    const valor = parseInt(document.getElementById('numeroEliminar').value);
+    if (!isNaN(valor)) {
+        miLista.eliminar(valor);
+        document.getElementById('numeroEliminar').value = ''; // Limpiar el campo
+    } else {
+        alert('Por favor, ingresa un número válido para eliminar.');
+    }
+});
+
+document.getElementById('buscarBtn').addEventListener('click', () => {
+    const valor = parseInt(document.getElementById('numeroBuscar').value);
+    if (!isNaN(valor)) {
+        const index = miLista.buscar(valor);
+        if (index !== -1) {
+            alert(`Número ${valor} encontrado en la posición ${index}.`);
+        } else {
+            alert('Número no encontrado.');
+        }
+        document.getElementById('numeroBuscar').value = ''; // Limpiar el campo
+    } else {
+        alert('Por favor, ingresa un número válido para buscar.');
+    }
+});
+
+document.getElementById('ordenarBtn').addEventListener('click', () => {
+    miLista.ordenar();
 });

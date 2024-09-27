@@ -10,3 +10,16 @@ mi_lista = ListaEnteros()
 mi_lista.agregar(5)
 mi_lista.agregar(2)
 print(mi_lista.lista) # Imprime: [5, 2]
+
+def eliminar_por_indice(self, indice):
+    if 0 <= indice < len(self.lista):
+        del self.lista[indice]
+
+def buscar(self,valor):
+    try:
+        return self.lista.index(valor)
+    except ValueError:
+        return -1
+
+def ordenar(self):
+    self.lista.sort()

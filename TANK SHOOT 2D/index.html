@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tank Shoot 2D</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Press Start 2P', sans-serif;
+            background-color: #000000;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image: url('https://www.transparenttextures.com/patterns/black-paper.png');
+        }
+
+        .container {
+            text-align: center;
+            border: 5px solid #3A3A3A;
+            padding: 30px;
+            background-color: #1a1a1a;
+            box-shadow: 0px 0px 15px 5px rgba(255, 0, 0, 0.6), 0px 0px 40px 10px rgba(0, 255, 0, 0.5);
+            width: 80%;
+            max-width: 600px;
+        }
+
+        h1 {
+            font-size: 3rem;
+            color: #ff6347; /* Color más vibrante */
+            text-shadow: 3px 3px 5px #000, -3px -3px 5px #ff0000;
+        }
+
+        .subtext {
+            font-size: 1.2rem;
+            color: #00FF00;
+            margin-bottom: 40px;
+            text-shadow: 1px 1px 3px #000;
+        }
+
+        .game-button {
+            display: inline-block;
+            padding: 20px 80px;
+            background-color: #4CAF50;
+            color: white;
+            font-size: 1.5rem;
+            border: 3px solid #000;
+            cursor: pointer;
+            text-transform: uppercase;
+            box-shadow: 2px 2px 0px #000, -2px -2px 0px #4CAF50;
+        }
+
+        .game-button:hover {
+            background-color: #5FD06E;
+            box-shadow: 4px 4px 0px #000, -4px -4px 0px #4CAF50;
+        }
+
+        .high-score {
+            font-size: 1.5rem;
+            color: #FFD700; /* Dorado para el puntaje alto */
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 3px #000;
+        }
+
+        .footer {
+            font-size: 1rem;
+            color: #808080;
+            margin-top: 40px;
+            text-shadow: 1px 1px 2px #000;
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p class="high-score">HIGH SCORE 1700</p>
+        <h1>TANK SHOOT 2D</h1>
+        <p class="subtext">Version 1.003 (c) Darksun Tech 2010-2019</p>
+        <button class="game-button">1P GAME</button>
+        <p class="footer">www.tankshoot.com</p>
+    </div>
+</body>
+</html>

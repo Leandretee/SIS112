@@ -4,7 +4,7 @@ class Tank{
     direccionDisparo;
     Vidas;
 
-    constructor(_posX, _PosY, _direccionDisparo, _Vidas){
+    constructor(_posX, _posY, _direccionDisparo, _Vidas){
         this.posX = _posX;
         this.posY = _posY;
         this.direccionDisparo = _direccionDisparo;

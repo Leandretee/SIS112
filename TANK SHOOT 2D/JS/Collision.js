@@ -7,7 +7,7 @@ class Collision{
         this.posX = _posX;
         this.posY = _posY;
         this.duracion = _duracion;
-
+        
     }
 
     playAnimation(){

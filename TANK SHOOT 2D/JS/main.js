@@ -1,14 +1,15 @@
 // Seleccionamos el canvas y el contexto
 const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
+var utilsObj = new Utils();
 
 // Función para ajustar el tamaño del canvas a la ventana
 function resizeCanvas() {
 canvas.width = window.innerWidth * 0.9;
 canvas.height = window.innerHeight * 0.9;
 
-canvas.width = Math.round(canvas.width/50) * 50; // lO DIVIDIMOS EN PORCIONES IGUALES PARA QUE EN EL MARCO DEL JUEGO NO QUEDEN ESPACIOS CON EL TANQUE
-canvas.height = Math.round(canvas.height/50) * 50;
+canvas.width = utilsObj.RoundTablero(canvas.width);
+canvas.height = utilsObj.RoundTablero(canvas.height);
 
 console.log('width', canvas.width)
 console.log('height', canvas.height)
@@ -31,17 +32,9 @@ const enemyTank3 = new EnemyTank(500, 400, 'down', 3, game.ancho, game.alto);
 const enemyTank4 = new EnemyTank(600, 100, 'down', 3, game.ancho, game.alto);
 
 // Dibujamos los elementos en el canvas
-function drawTank(tank) {
-ctx.fillStyle = 'green';
-// Representamos el tanque como un cuadrado
-ctx.fillRect(tank.posX, tank.posY, 50, 50);
-}
 
-function drawEnemyTank(enemyTank) {
-ctx.fillStyle = 'red';
-// Representamos el tanque enemigo como un cuadrado
-ctx.fillRect(enemyTank.posX, enemyTank.posY, 50, 50);
-}
+
+
 
 // Controles basicos para mmover el tanque del jugador
 window.addEventListener('keydown', function (e) {
@@ -115,11 +108,13 @@ function updateGame() {
 // Limpiamos el canvas en cada frame
 ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-drawTank(playerTank); // Dibujamos el tanque del jugador
-drawEnemyTank(enemyTank1);
-drawEnemyTank(enemyTank2);
-drawEnemyTank(enemyTank3);
-drawEnemyTank(enemyTank4); // Dibujamos el tanque enemigo
+// Dibujamos el tanque del jugador
+playerTank.drawTank(ctx);
+// Dibujamos el tanque enemigo
+enemyTank1.drawEnemyTank(ctx);
+enemyTank2.drawEnemyTank(ctx);
+enemyTank3.drawEnemyTank(ctx);
+enemyTank4.drawEnemyTank(ctx);
 
 // Refrescar los graficos
 requestAnimationFrame(updateGame);

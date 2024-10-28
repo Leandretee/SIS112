@@ -44,5 +44,9 @@ class Tank{
     rotarTank(_direccionDisparo){
         this.direccionDisparo = _direccionDisparo;
     }
-
+    drawTank(ctx) {
+        ctx.fillStyle = 'green';
+        // Representamos el tanque como un cuadrado
+        ctx.fillRect(this.posX, this.posY, 50, 50);
+        }
 }

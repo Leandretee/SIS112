@@ -103,10 +103,56 @@ setInterval(()=>{
     moveEnemyTankRandomly(enemyTank4);
 }, 200);
 
+const escenario = [ 
+    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], 
+    [1, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 1, 1], 
+    [1, 0, 4, 0, 0, 1, 1, 0, 0, 0, 1, 1, 0, 0, 1], 
+    [1, 0, 0, 2, 0, 1, 0, 0, 2, 0, 0, 1, 0, 0, 1], 
+    [1, 0, 2, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 1, 1], 
+    [1, 1, 1, 0, 0, 3, 0, 0, 0, 0, 0, 0, 1, 1, 1], 
+    [1, 0, 4, 0, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1], 
+    [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 1], 
+    [1, 1, 1, 1, 1, 1, 0, 3, 0, 0, 0, 0, 1, 1, 1], 
+    [1, 0, 0, 0, 0, 1, 1, 0, 1, 1, 0, 0, 0, 1, 1], 
+    [1, 0, 0, 2, 0, 1, 0, 0, 0, 0, 2, 0, 0, 1, 1], 
+    [1, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 1], 
+    [1, 4, 0, 0, 1, 1, 0, 0, 0, 1, 1, 0, 0, 0, 1], 
+    [1, 0, 2, 0, 0, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1], 
+    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1] 
+];
+
+function drawEscenario(ctx, escenario) {
+     for (let row = 0; row < escenario.length; row++) { 
+        for (let col = 0; col < escenario[row].length; col++) { 
+            const cell = escenario[row][col]; 
+            const x = col * game.anchoCelda; 
+            const y = row * game.altoCelda;
+            
+            switch(cell) { 
+                case 0: // Espacio vacío 
+                ctx.fillStyle = "black";
+                ctx.fillRect(x, y, game.anchoCelda, game.altoCelda); 
+                break; 
+                case 1: // Pared 
+                ctx.fillStyle = "gray"; 
+                ctx.fillRect(x, y, game.anchoCelda, game.altoCelda); 
+                // var wall = new Image(); 
+                // wall.src = "./ASSETS/pared.webp"; 
+                // ctx.drawImage(wall, x, y, cellSize, cellSize); 
+                break; 
+            default:
+                break;
+            }
+         } 
+        } 
+    }
+
 // Lógica del juego (actualización de la pantalla)
 function updateGame() {
 // Limpiamos el canvas en cada frame
 ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+drawEscenario(ctx, escenario); // Dibujamos el escenario
 
 // Dibujamos el tanque del jugador
 playerTank.drawTank(ctx);

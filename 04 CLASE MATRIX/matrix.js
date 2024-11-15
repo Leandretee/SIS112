@@ -349,31 +349,33 @@ class Matriz {
     //3
     llenarMatrizCruces() {
         this.vaciarMatriz();
-        const centro = Math.floor(this.filas / 2);
+        const mitadCol = Math.floor(this.columnas / 2);
+        const mitadFilas = Math.floor(this.filas / 2);
+
         for (let i = 0; i < this.filas; i++) {
             for (let j = 0; j < this.columnas; j++) {
-                if (i === centro || j === centro) {
+                if (j === mitadCol) {
                     this.matriz[i][j] = 1;
-                } else {
-                    this.matriz[i][j] = 0;
+                }
+                if (i === mitadFilas) {
+                    this.matriz[i][j] = 1;
                 }
             }
         }
         this.dibujarMatriz();
-    }
+    }
 
     //4
     llenarMatrizBordesDiagonales() {
         this.vaciarMatriz();
         for (let i = 0; i < this.filas; i++) {
-            this.matriz[i][0] = 1; //Para el borde Izquierdo
-            this.matriz[i][this.columnas - 1] = 1; //Para el borde derecho
             for (let j = 0; j < this.columnas; j++) {
-                this.matriz[0][j] = 1; //Para el borde de arriba
-                this.matriz[this.filas - 1][j] = 1; //Para el borde de abajo 
-                for (let i = 2; i <= 6; i++) {
-                    this.matriz[i][i] = 2;//Diagonal 
-                    this.matriz[i][this.columnas - 1 - i] = 2; //Diagonal inversa
+                if (i === 0 || i === this.filas - 1 || j === 0 || j === this.columnas - 1) {
+                    this.matriz[i][j] = 1;
+                } else if (i === 1 || i === this.filas - 2 || j === 1 || j === this.columnas - 2) {
+                    this.matriz[i][j] = 0;
+                } else if (i === j || i + j === this.columnas - 1) {
+                    this.matriz[i][j] = 2;
                 }
             }
         }
@@ -515,23 +517,50 @@ class Matriz {
 
     //13
     llenarMatrizRombosConcentricos() {
-        this.vaciarMatriz();
-        const centro = Math.floor(this.filas / 2);
+        this.vaciarMatriz(); 
 
         for (let i = 0; i < this.filas; i++) {
             for (let j = 0; j < this.columnas; j++) {
-                // Calcular la distancia al centro
-                const distancia = Math.max(Math.abs(centro - i), Math.abs(centro - j));
-
-                // Rellenar con 1 si la distancia es menor o igual a la cantidad de capas
-                if (distancia < centro) {
-                    this.matriz[i][j] = 1;
-                }
+                this.matriz[i][j] = 1;
             }
         }
-
+        
+        const tamRombo = 3; // Tamaño del rombo desde la esquina hacia el centro
+        
+        // Dibuja rombo en la esquina superior izquierda
+        for (let i = 0; i <= tamRombo; i++) {
+            for (let j = 0; j <= tamRombo - i; j++) {
+                this.matriz[i][j] = 0; // Cambia la zona del rombo a 0
+                this.matriz[j][i] = 0;
+            }
+        }
+        
+        // Dibuja rombo en la esquina superior derecha
+        for (let i = 0; i <= tamRombo; i++) {
+            for (let j = 0; j <= tamRombo - i; j++) {
+                this.matriz[i][this.columnas - 1 - j] = 0;
+                this.matriz[j][this.columnas - 1 - i] = 0;
+            }
+        }
+        
+        // Dibuja rombo en la esquina inferior izquierda
+        for (let i = 0; i <= tamRombo; i++) {
+            for (let j = 0; j <= tamRombo - i; j++) {
+                this.matriz[this.filas - 1 - i][j] = 0;
+                this.matriz[this.filas - 1 - j][i] = 0;
+            }
+        }
+        
+        // Dibuja rombo en la esquina inferior derecha
+        for (let i = 0; i <= tamRombo; i++) {
+            for (let j = 0; j <= tamRombo - i; j++) {
+                this.matriz[this.filas - 1 - i][this.columnas - 1 - j] = 0;
+                this.matriz[this.filas - 1 - j][this.columnas - 1 - i] = 0;
+                }
+            }
         this.dibujarMatriz();
-    }
+        }
+
 
     // 14
     llenarMatrizCrucesConcentricas() {
@@ -648,40 +677,35 @@ class Matriz {
 
     llenarMatrizRomboEsquinas() {
         this.vaciarMatriz();
-        const romboAltura = 3; // Altura del rombo
-
-        // Rellenar el rombo en la esquina superior izquierda
-        for (let i = 0; i < romboAltura; i++) {
-            for (let j = 0; j <= i; j++) {
-                this.matriz[i][j] = 1; // Parte superior del rombo
-                this.matriz[i][this.columnas - 1 - j] = 1; // Parte derecha del rombo
+        const tamRombo = 3; // Tamaño del rombo desde la esquina hacia el centro
+        // Dibuja rombo en la esquina superior izquierda
+        for (let i = 0; i <= tamRombo; i++) {
+            for (let j = 0; j <= tamRombo - i; j++) {
+                this.matriz[i][j] = 1;
+                this.matriz[j][i] = 1;
             }
         }
-
-        // Rellenar el rombo en la esquina superior derecha
-        for (let i = 0; i < romboAltura; i++) {
-            for (let j = 0; j <= i; j++) {
-                this.matriz[i][this.columnas - 1 - j] = 1; // Parte superior del rombo
-                this.matriz[i][j] = 1; // Parte izquierda del rombo
+        // Dibuja rombo en la esquina superior derecha
+        for (let i = 0; i <= tamRombo; i++) {
+            for (let j = 0; j <= tamRombo - i; j++) {
+                this.matriz[i][this.columnas - 1 - j] = 1;
+                this.matriz[j][this.columnas - 1 - i] = 1;
             }
         }
-
-        // Rellenar el rombo en la esquina inferior izquierda
-        for (let i = 0; i < romboAltura; i++) {
-            for (let j = 0; j <= i; j++) {
-                this.matriz[this.filas - 1 - i][j] = 1; // Parte inferior del rombo
-                this.matriz[this.filas - 1 - i][this.columnas - 1 - j] = 1; // Parte derecha del rombo
+        // Dibuja rombo en la esquina inferior izquierda
+        for (let i = 0; i <= tamRombo; i++) {
+            for (let j = 0; j <= tamRombo - i; j++) {
+                this.matriz[this.filas - 1 - i][j] = 1;
+                this.matriz[this.filas - 1 - j][i] = 1;
             }
         }
-
-        // Rellenar el rombo en la esquina inferior derecha
-        for (let i = 0; i < romboAltura; i++) {
-            for (let j = 0; j <= i; j++) {
-                this.matriz[this.filas - 1 - i][this.columnas - 1 - j] = 1; // Parte inferior del rombo
-                this.matriz[this.filas - 1 - i][j] = 1; // Parte izquierda del rombo
+        // Dibuja rombo en la esquina inferior derecha
+        for (let i = 0; i <= tamRombo; i++) {
+            for (let j = 0; j <= tamRombo - i; j++) {
+                this.matriz[this.filas - 1 - i][this.columnas - 1 - j] = 1;
+                this.matriz[this.filas - 1 - j][this.columnas - 1 - i] = 1;
             }
         }
-
         this.dibujarMatriz();
     }
 

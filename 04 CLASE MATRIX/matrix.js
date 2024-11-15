@@ -423,41 +423,43 @@ class Matriz {
 
     //8
     llenarMatrizEspiral() {
-        let top = 0;
-        let bottom = this.filas - 1;
-        let left = 0;
-        let right = this.columnas - 1;
-
-        while (top <= bottom && left <= right) {
-            // Rellenar la fila superior
-            for (let i = left; i <= right; i++) {
-                this.matriz[top][i] = 1;
+        this.vaciarMatriz();
+        let valor = 1;
+        let inicioFila = 0, finFila = this.filas - 1;
+        let inicioCol = 0, finCol = this.columnas - 1;
+    
+        while (inicioFila <= finFila && inicioCol <= finCol) {
+            
+            for (let j = inicioCol; j <= finCol; j++) {
+                this.matriz[inicioFila][j] = valor;
             }
-            top++;
-
-            // Rellenar la columna derecha
-            for (let i = top; i <= bottom; i++) {
-                this.matriz[i][right] = 1;
+            inicioFila++;
+    
+            
+            for (let i = inicioFila; i <= finFila; i++) {
+                this.matriz[i][finCol] = valor;
             }
-            right--;
-
-            // Rellenar la fila inferior
-            if (top <= bottom) {
-                for (let i = right; i >= left; i--) {
-                    this.matriz[bottom][i] = 1;
+            finCol--;
+    
+            
+            if (inicioFila <= finFila) {
+                for (let j = finCol; j >= inicioCol; j--) {
+                    this.matriz[finFila][j] = valor;
                 }
-                bottom--;
+                finFila--;
             }
-
-            // Rellenar la columna izquierda
-            if (left <= right) {
-                for (let i = bottom; i >= top; i--) {
-                    this.matriz[i][left] = 1;
+    
+            
+            if (inicioCol <= finCol) {
+                for (let i = finFila; i >= inicioFila; i--) {
+                    this.matriz[i][inicioCol] = valor;
                 }
-                left++;
+                inicioCol++;
             }
+    
+            
+            valor = (valor === 1) ? 0 : 1;
         }
-
         this.dibujarMatriz();
     }
 
@@ -565,20 +567,40 @@ class Matriz {
     // 14
     llenarMatrizCrucesConcentricas() {
         this.vaciarMatriz();
-        const centro = Math.floor(this.filas / 2);
-
-        for (let i = 0; i < this.filas; i++) {
-            for (let j = 0; j < this.columnas; j++) {
-                // Calcular la distancia al centro
-                const distancia = Math.max(Math.abs(centro - i), Math.abs(centro - j));
-
-                // Rellenar con 1 si la distancia es menor o igual a la cantidad de capas
-                if (distancia < centro) {
+        const filas = this.filas;
+        const columnas = this.columnas;
+    
+        for (let i = 0; i < filas; i++) {
+            for (let j = 0; j < columnas; j++) {
+                if (
+                    // Evitar columnas 2 y 8
+                    j !== 1 && j !== 8 &&
+                    
+                    (
+                        // Borde exterior de 1s
+                        (i === 0 && j >= 2 && j <= columnas - 3) ||
+                        (i === filas - 1 && j >= 2 && j <= columnas - 3) ||
+                        (j === 0 && i >= 2 && i <= filas - 3) ||
+                        (j === columnas - 1 && i >= 2 && i <= filas - 3) ||
+    
+                        // Segunda capa de 1s formando una cruz interna
+                        (i === 2 && j >= 1 && j <= columnas - 2) ||
+                        (i === filas - 3 && j >= 1 && j <= columnas - 2) ||
+                        (j === 2 && i >= 1 && i <= filas - 2) ||
+                        (j === columnas - 3 && i >= 1 && i <= filas - 2) ||
+    
+                        // Centro de la cruz
+                        (i === Math.floor(filas / 2) && j >= 3 && j <= columnas - 4) ||
+                        (j === Math.floor(columnas / 2) && i >= 3 && i <= filas - 4)
+                    )
+                ) {
                     this.matriz[i][j] = 1;
+                } else {
+                    this.matriz[i][j] = 0;
                 }
             }
         }
-
+    
         this.dibujarMatriz();
     }
     

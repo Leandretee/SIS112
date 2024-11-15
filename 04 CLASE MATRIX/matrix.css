@@ -3,13 +3,13 @@ html, body {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
+    font-family: 'Roboto', sans-serif;
     overflow: hidden;
 }
 
 /* Estilo del cuerpo y fondo */
 body {
-    background-color: #20232a;
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
     color: white;
     display: flex;
     align-items: center;
@@ -21,43 +21,85 @@ body {
 .main-container {
     display: flex;
     align-items: center;
-    gap: 20px; /* Espacio entre el canvas y los botones */
+    gap: 30px;
+    padding: 30px;
+    border-radius: 20px;
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(15px);
 }
 
 /* Estilos para el contenedor de botones */
 .button-container {
     display: flex;
     flex-direction: column;
-    gap: 10px; /* Espacio entre cada botón */
+    gap: 20px;
 }
 
 /* Estilos para los botones */
 button {
-    padding: 12px 24px;
+    padding: 14px 28px;
     font-size: 16px;
     font-weight: bold;
-    color: #20232a;
-    background-color: #61dafb;
+    color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 10px;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(135deg, #ff7eb3, #ff758c);
+}
+
+/* Botones animados con colores dinámicos */
+button:nth-child(1) {
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+}
+
+button:nth-child(2) {
+    background: linear-gradient(135deg, #f7971e, #ffd200);
+}
+
+button:nth-child(3) {
+    background: linear-gradient(135deg, #00c6ff, #0072ff);
 }
 
 button:hover {
-    background-color: #21a1f1;
-    transform: scale(1.05);
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    filter: brightness(1.2);
 }
 
 button:active {
-    background-color: #1a85c2;
+    transform: scale(1);
+    box-shadow: inset 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
 /* Estilo del canvas */
 canvas {
-    border: 3px solid #61dafb;
-    border-radius: 10px;
-    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
+    border: 4px solid rgba(255, 255, 255, 0.7);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
     max-width: 90vw;
     max-height: 90vh;
+    background: linear-gradient(135deg, #1c1f26, #3a3f4b);
+}
+
+/* Efecto animado en el borde del canvas */
+canvas {
+    animation: borderGlow 3s infinite alternate;
+}
+
+@keyframes borderGlow {
+    0% {
+        border-color: #61dafb;
+        box-shadow: 0 0 20px rgba(97, 218, 251, 0.8);
+    }
+    50% {
+        border-color: #21a1f1;
+        box-shadow: 0 0 25px rgba(33, 161, 241, 0.8);
+    }
+    100% {
+        border-color: #1a85c2;
+        box-shadow: 0 0 30px rgba(26, 133, 194, 0.8);
+    }
 }

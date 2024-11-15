@@ -349,21 +349,20 @@ class Matriz {
     //3
     llenarMatrizCruces() {
         this.vaciarMatriz();
-        const mitadCol = Math.floor(this.columnas / 2);
-        const mitadFilas = Math.floor(this.filas / 2);
-
+        const filaCentral = Math.floor(this.filas / 2) -1;
+        const columnaCentral = Math.floor(this.columnas / 2) -1;
         for (let i = 0; i < this.filas; i++) {
             for (let j = 0; j < this.columnas; j++) {
-                if (j === mitadCol) {
+                // Asigna 1 a la fila y columna centrales
+                if (i === filaCentral || j === columnaCentral) {
                     this.matriz[i][j] = 1;
-                }
-                if (i === mitadFilas) {
-                    this.matriz[i][j] = 1;
+                } else {
+                    this.matriz[i][j] = 0;
                 }
             }
         }
         this.dibujarMatriz();
-    }
+    }
 
     //4
     llenarMatrizBordesDiagonales() {
@@ -424,44 +423,56 @@ class Matriz {
     //8
     llenarMatrizEspiral() {
         this.vaciarMatriz();
-        let valor = 1;
-        let inicioFila = 0, finFila = this.filas - 1;
-        let inicioCol = 0, finCol = this.columnas - 1;
+        let row = 0;
+        let col = 0;
+        let direction = 0; 
+        let steps = 1;
+        let stepCount = 0;
     
-        while (inicioFila <= finFila && inicioCol <= finCol) {
-            
-            for (let j = inicioCol; j <= finCol; j++) {
-                this.matriz[inicioFila][j] = valor;
-            }
-            inicioFila++;
+        for (let i = 0; i < this.columnas * this.filas; i++) {
+            this.matriz[row][col] = 1;
     
-            
-            for (let i = inicioFila; i <= finFila; i++) {
-                this.matriz[i][finCol] = valor;
-            }
-            finCol--;
+            stepCount++;
     
-            
-            if (inicioFila <= finFila) {
-                for (let j = finCol; j >= inicioCol; j--) {
-                    this.matriz[finFila][j] = valor;
+            if (stepCount === steps) {
+                stepCount = 0;
+                direction = (direction + 1) % 4;
+                if (direction % 2 === 0) {
+                    steps++;
                 }
-                finFila--;
             }
     
-            
-            if (inicioCol <= finCol) {
-                for (let i = finFila; i >= inicioFila; i--) {
-                    this.matriz[i][inicioCol] = valor;
-                }
-                inicioCol++;
+            switch (direction) {
+                case 0: 
+                    if (col + 1 >= this.columnas) {
+                        break; 
+                    }
+                    col++;
+                    break;
+                case 1:
+                    if (row + 1 >= this.filas) {
+                        break;
+                    }
+                    row++;
+                    break;
+                case 2: 
+                    if (col - 1 < 0) {
+                        break; 
+                    }
+                    col--;
+                    break;
+                case 3:
+                    if (row - 1 < 0) {
+                        break; 
+                    }
+                    row--;
+                    break;
             }
-    
-            
-            valor = (valor === 1) ? 0 : 1;
         }
+    
         this.dibujarMatriz();
     }
+
 
     //9
     llenarMatrizTrianguloSuperiorIzquierdo() {
@@ -812,7 +823,7 @@ class Matriz {
 
     // Métodos para dibujar cada tipo de celda con un color específico
     DibujarCero(x, y, ancho, alto) {
-        this.ctx.fillStyle = "#2c3e50"; // Color para valor 0
+        this.ctx.fillStyle = "#8e144a"; // Color para valor 0
         this.ctx.fillRect(x, y, ancho, alto);
         this.ctx.strokeStyle = "#ecf0f1";
         this.ctx.strokeRect(x, y, ancho, alto);
@@ -825,7 +836,7 @@ class Matriz {
     }
 
     DibujarUno(x, y, ancho, alto) {
-        this.ctx.fillStyle = "#8e44ad"; // Color para valor 1
+        this.ctx.fillStyle = "#00983a"; // Color para valor 1
         this.ctx.fillRect(x, y, ancho, alto);
         this.ctx.strokeStyle = "#ecf0f1";
         this.ctx.strokeRect(x, y, ancho, alto);

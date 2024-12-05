@@ -823,7 +823,7 @@ class Matriz {
 
     // Métodos para dibujar cada tipo de celda con un color específico
     DibujarCero(x, y, ancho, alto) {
-        this.ctx.fillStyle = "#8e144a"; // Color para valor 0
+        this.ctx.fillStyle = "#000000"; // Color para valor 0
         this.ctx.fillRect(x, y, ancho, alto);
         this.ctx.strokeStyle = "#ecf0f1";
         this.ctx.strokeRect(x, y, ancho, alto);
@@ -836,7 +836,7 @@ class Matriz {
     }
 
     DibujarUno(x, y, ancho, alto) {
-        this.ctx.fillStyle = "#00983a"; // Color para valor 1
+        this.ctx.fillStyle = "#FFC300"; // Color para valor 1
         this.ctx.fillRect(x, y, ancho, alto);
         this.ctx.strokeStyle = "#ecf0f1";
         this.ctx.strokeRect(x, y, ancho, alto);
@@ -849,7 +849,7 @@ class Matriz {
     }
 
     DibujarDos(x, y, ancho, alto) {
-        this.ctx.fillStyle = "#e74c3c"; // Color para valor 2
+        this.ctx.fillStyle = "#a80909"; // Color para valor 2
         this.ctx.fillRect(x, y, ancho, alto);
         this.ctx.strokeStyle = "#ecf0f1";
         this.ctx.strokeRect(x, y, ancho, alto);

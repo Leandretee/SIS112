@@ -1,0 +1,75 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background: radial-gradient(circle at center, #000428, #004e92); /* Fondo en degradado espacial */
+    color: white;
+    text-align: center;
+    overflow: hidden;
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin: 20px;
+    text-shadow: 0 0 10px #ff005e, 0 0 20px #ff005e;
+}
+
+canvas {
+    border: 3px solid #ffffff;
+    background: rgba(0, 0, 0, 0.8);
+    box-shadow: 0 0 10px #00e6e6, 0 0 20px #00e6e6;
+}
+
+.botonesDiv {
+    margin-top: 20px;
+}
+
+button {
+    font-size: 1.2rem;
+    padding: 10px 20px;
+    margin: 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: transform 0.2s, background 0.3s;
+}
+
+.botonesMover {
+    background: linear-gradient(45deg, #ff9a9e, #fad0c4);
+}
+
+.botonDisparo {
+    background: linear-gradient(45deg, #f6d365, #fda085);
+}
+
+.botonReiniciar {
+    background: linear-gradient(45deg, #84fab0, #8fd3f4);
+}
+
+button:hover {
+    transform: scale(1.1);
+    background: linear-gradient(45deg, #ff758c, #ff7eb3);
+}
+
+/* Fondo animado */
+body:before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('https://www.transparenttextures.com/patterns/stardust.png') repeat;
+    animation: moveBackground 20s linear infinite;
+    z-index: -1; /* Coloca detrás del contenido */
+    opacity: 0.2;
+}
+
+@keyframes moveBackground {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 1000px 1000px;
+    }
+}

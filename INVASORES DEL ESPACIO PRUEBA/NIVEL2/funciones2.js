@@ -71,8 +71,6 @@ var disparoEnemigo;
 var tiempoDisparo = 500;
 var puntos = 0;
 var sinMunicion = false;
-var nivel = 1; // Nuevo: nivel inicial del juego
-var velocidadEnemigos = 20; // Nueva: velocidad base de los enemigos
 /*****************
 OBJETOS
 ******************/
@@ -215,60 +213,32 @@ function colisiones() {
 		}
 	}
 }
-
-
 function gameOver() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    balas_array = [];
-    ovnis_array = [];
-    balasEnemigas_array = [];
-    
-    if (enemigosVivos == 0) {
-        mensaje("NIVEL " + nivel + " COMPLETADO");
-        setTimeout(() => {
-            nivel++; // Incrementar nivel
-            iniciaNivel(); // Iniciar el siguiente nivel
-        }, 2000);
-    } else {
-        if (sinMunicion) {
-            mensaje("SIN MUNICION");
-            setTimeout(() => { mensaje("GAME OVER"); }, 2000);
-        } else {
-            mensaje("GAME OVER");
-        }
-        let botonesJuego = document.querySelectorAll(".botonesMover, .botonDisparo");
-        botonesJuego.forEach(function (e) {
-            e.style.display = "none";
-        });
-        let botonReinicio = document.querySelectorAll(".botonReiniciar");
-        botonReinicio.forEach(function (e) {
-            e.style.display = "block";
-        });
-        endGame = true;
-        clearTimeout(disparoEnemigo);
-    }
+	ctx.clearRect(0, 0, canvas.width, canvas.height);
+	balas_array = [];
+	ovnis_array = [];
+	balasEnemigas_array = [];
+	if( enemigosVivos == 0 ){
+		mensaje("GANASTE");
+	}else{
+		if(sinMunicion){
+			mensaje("SIN MUNICION");
+			setTimeout(() => { mensaje("GAME OVER"); }, 2000);
+		}else{
+			mensaje("GAME OVER");
+		}
+	}
+	let botonesJuego = document.querySelectorAll(".botonesMover, .botonDisparo");
+	botonesJuego.forEach(function(e) {
+		e.style.display = "none";
+	});
+	let botonReinicio = document.querySelectorAll(".botonReiniciar");
+	botonReinicio.forEach(function(e) {
+		e.style.display = "block";
+	});
+	endGame = true;
+	clearTimeout(disparoEnemigo);
 }
-
-function iniciaNivel() {
-    // Reiniciar contexto
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    balas_array = [];
-    balasEnemigas_array = [];
-    ovnis_array = [];
-    enemigosVivos = 50 + (nivel - 1) * 10; // Aumentar enemigos por nivel
-    velocidadEnemigos = 20 - Math.min(10, nivel * 2); // Reducir el ciclo de los enemigos para mayor velocidad
-
-    // Generar nuevos enemigos
-    for (var i = 0; i < 5 + nivel; i++) { // Incrementar filas según el nivel
-        for (var j = 0; j < 10; j++) {
-            ovnis_array.push(new Enemigo(100 + 40 * j, 30 + 45 * i));
-        }
-    }
-    anima(); // Reanudar la animación
-    disparoEnemigo = setTimeout(disparaEnemigo, tiempoDisparo); // Reiniciar disparos enemigos
-    endGame = false;
-}
-
 function score() {
 	ctx.save();
 	ctx.fillStyle = "white";
@@ -277,7 +247,6 @@ function score() {
 	ctx.fillText("SCORE: " + puntos, 10, 20);
 	ctx.restore();
 }
-
 function municiones() {
 	ctx.save();
 	ctx.fillStyle = "white";
@@ -286,7 +255,6 @@ function municiones() {
 	ctx.fillText("Municion: " + (sinMunicion ? 'Sin municion.' : municion), 10, 40);
 	ctx.restore();
 }
-
 function verifica(boton=false, codigo=0) {
 	if(boton){
 		teclaPulsada = codigo;
@@ -318,7 +286,6 @@ function verifica(boton=false, codigo=0) {
 		}, 100);
 	}
 }
-
 function checarBalas(){
 	var balasArrayVal = 0;
 	for(let i = 0 ; i < balas_array.length; i++){
@@ -332,7 +299,6 @@ function checarBalas(){
 		setTimeout(() => { gameOver(); }, 1000);
 	}
 }
-
 function pinta() {
 	ctx.clearRect(0, 0, canvas.width, canvas.height);
 	score();
@@ -365,7 +331,6 @@ function pinta() {
 	}
 	if (numEnemigos == 0) gameOver();
 }
-
 function disparaEnemigo() {
 	for (var i = ovnis_array.length - 1; i > 0; i--) {
 		if (ovnis_array[i] != null) {
@@ -390,54 +355,6 @@ function disparaEnemigo() {
 	clearTimeout(disparoEnemigo);
 	disparoEnemigo = setTimeout(disparaEnemigo, tiempoDisparo);
 }
-
-function Enemigo(x, y) {
-    this.x = x;
-    this.y = y;
-    this.w = 35;
-    this.veces = 0;
-    this.dx = 5;
-    this.ciclos = 0;
-    this.num = velocidadEnemigos; // Usar la nueva variable de velocidad
-    this.figura = true;
-    this.vive = true;
-
-    this.dibuja = function () {
-        if (this.ciclos > this.num) {
-            if (this.veces > this.num) {
-                this.dx *= -1;
-                this.veces = 0;
-                this.num = velocidadEnemigos;
-                this.y += 40;
-                this.dx = (this.dx > 0) ? this.dx + 1 : this.dx - 1;
-            } else {
-                this.x += this.dx;
-            }
-            this.veces++;
-            this.ciclos = 0;
-            this.figura = !this.figura;
-        } else {
-            this.ciclos++;
-        }
-        if (this.vive) {
-            if (imgAni < 4) {
-                ctx.drawImage(imgOvni, 0, 0, 32, 32, this.x, this.y, 35, 35);
-            } else if (imgAni < 8) {
-                ctx.drawImage(imgOvni, 32, 0, 32, 32, this.x, this.y, 35, 35);
-            } else if (imgAni < 12) {
-                ctx.drawImage(imgOvni, 64, 0, 32, 32, this.x, this.y, 35, 35);
-            } else if (imgAni > 11) {
-                ctx.drawImage(imgOvni, 0, 0, 32, 32, this.x, this.y, 35, 35);
-                imgAni = 0;
-            }
-        } else {
-            ctx.fillStyle = "black";
-            ctx.fillRect(this.x, this.y, 35, 30);
-        }
-    };
-}
-
-function reiniciar() {
-    nivel = 1; // Reiniciar nivel
-    location.reload();
+function reiniciar(){
+	location.reload();
 }

@@ -51,6 +51,23 @@ button:hover {
     background: linear-gradient(45deg, #ff758c, #ff7eb3);
 }
 
+.botonVolver {
+    background: linear-gradient(45deg, #ff758c, #ff7eb3);
+    color: white;
+    font-size: 1.2rem;
+    padding: 10px 20px;
+    margin: 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: transform 0.3s, background 0.3s;
+}
+
+.botonVolver:hover {
+    transform: scale(1.1);
+    background: linear-gradient(45deg, #ff9a9e, #fad0c4);
+}
+
 /* Fondo animado */
 body:before {
     content: '';
